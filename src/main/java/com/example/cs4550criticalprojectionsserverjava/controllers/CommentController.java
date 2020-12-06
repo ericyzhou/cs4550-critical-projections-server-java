@@ -16,7 +16,7 @@ public class CommentController {
     return service.findCommentsForReview(reviewId);
   }
 
-  @GetMapping("/api/users/{uid}/reviews")
+  @GetMapping("/api/users/{uid}/comments")
   public List<Comment> findCommentsForUser(
           @PathVariable("uid") Integer userId) {
     return service.findCommentsForUser(userId);
