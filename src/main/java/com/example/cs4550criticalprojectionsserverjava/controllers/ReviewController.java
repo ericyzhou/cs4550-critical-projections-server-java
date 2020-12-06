@@ -30,13 +30,13 @@ public class ReviewController {
   }
 
   @DeleteMapping("/api/reviews/{rid}")
-  public Integer deleteWidget(
+  public Integer deleteReview(
           @PathVariable("rid") Integer reviewId) {
     return service.removeReview(reviewId);
   }
 
   @PutMapping("/api/reviews/{rid}")
-  public Integer updateWidget(
+  public Integer updateReview(
           @PathVariable("rid") Integer reviewId,
           @RequestBody Review review) {
     return service.updateReview(reviewId, review);

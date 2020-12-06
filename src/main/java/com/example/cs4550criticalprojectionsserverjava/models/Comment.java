@@ -6,12 +6,12 @@ public class Comment {
   //@Id
   //@GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String reviewId;
-  private String userId;
+  private Integer reviewId;
+  private Integer userId;
   private String body;
   private Integer likes;
 
-  public Comment(Integer id, String reviewId, String userId, String body, Integer likes) {
+  public Comment(Integer id, Integer reviewId, Integer userId, String body, Integer likes) {
     this.id = id;
     this.reviewId = reviewId;
     this.userId = userId;
@@ -27,19 +27,19 @@ public class Comment {
     this.id = id;
   }
 
-  public String getReviewId() {
+  public Integer getReviewId() {
     return reviewId;
   }
 
-  public void setReviewId(String reviewId) {
+  public void setReviewId(Integer reviewId) {
     this.reviewId = reviewId;
   }
 
-  public String getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
-  public void setUserId(String userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 
