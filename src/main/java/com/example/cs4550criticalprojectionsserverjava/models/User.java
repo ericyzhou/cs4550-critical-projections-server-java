@@ -1,4 +1,4 @@
-package main.java.com.example.cs4550criticalprojectionsserverjava.models;
+package com.example.cs4550criticalprojectionsserverjava.models;
 
 // @Entity
 // @Table(name = 'users')
