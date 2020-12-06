@@ -7,18 +7,20 @@ public class Review{
   //@GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String movieId;
-  private String userId;
+  private Integer userId;
   private Integer rating;
+  private String title;
   private String body;
   private Integer likes;
   private Boolean approved;
 
-  public Review(Integer id, String movieId, String userId, Integer rating, String body, Integer likes,
+  public Review(Integer id, String movieId, Integer userId, Integer rating, String title, String body, Integer likes,
                 Boolean approved) {
     this.id = id;
     this.movieId = movieId;
     this.userId = userId;
     this.rating = rating;
+    this.title = title;
     this.body = body;
     this.likes = likes;
     this.approved = approved;
@@ -40,11 +42,11 @@ public class Review{
     this.movieId = movieId;
   }
 
-  public String getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
-  public void setUserId(String userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 
@@ -78,5 +80,13 @@ public class Review{
 
   public void setApproved(Boolean approved) {
     this.approved = approved;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
   }
 }
