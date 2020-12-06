@@ -10,15 +10,15 @@ public class ReviewService {
   List<Review> reviews = new ArrayList<>();
   {
     reviews.add(new Review(-1, "tt0120338", -1, 6, "Boooooringgggg", "Gosh this was pretty bad." +
-            "I'm really glad that they can't make a sequel.", 360, true));
+            "I'm really glad that they can't make a sequel.", 360, true, false));
     reviews.add(new Review(-2, "tt0120338", -2, 10, "Heartbreaking and Life-Changing",
             "This made me cry so hard.  I hardly ever get emotional but this masterpiece moved me to tears." +
                     "I was really moved by the tragic tale of that poor, beautiful ship.  Oh, and some people died too.",
-            22, true));
+            22, true, false));
     reviews.add(new Review(-3, "tt0120338", -3, 1, "This isn't G-Force",
             "I went to the theater expecting some crazy guinea pig spy action. Imagine my disappointment " +
                     "when I took my seat only to be greeted by some sob story about a boat. Would give a negative rating if I could.",
-            1000, true));
+            1000, true, false));
   }
 
   public List<Review> findReviewsForMovie(String mid) {
