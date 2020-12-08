@@ -36,7 +36,7 @@ public class ReviewController {
   }
 
   @PutMapping("/api/reviews/{rid}")
-  public Integer updateReview(
+  public Review updateReview(
           @PathVariable("rid") Integer reviewId,
           @RequestBody Review review) {
     return service.updateReview(reviewId, review);

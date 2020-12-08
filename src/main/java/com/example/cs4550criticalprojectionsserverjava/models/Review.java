@@ -10,19 +10,19 @@ public class Review{
   private Integer userId;
   private Integer rating;
   private String Title;
-  private String Body;
+  private String body;
   private Integer likes;
   private Boolean approved;
   private Boolean criticReview;
 
-  public Review(Integer id, String movieId, Integer userId, Integer rating, String Title, String Body, Integer likes,
+  public Review(Integer id, String movieId, Integer userId, Integer rating, String Title, String body, Integer likes,
                 Boolean approved, Boolean criticReview) {
     this.id = id;
     this.movieId = movieId;
     this.userId = userId;
     this.rating = rating;
     this.Title = Title;
-    this.Body = Body;
+    this.body = body;
     this.likes = likes;
     this.approved = approved;
     this.criticReview = criticReview;
@@ -61,11 +61,11 @@ public class Review{
   }
 
   public String getBody() {
-    return Body;
+    return body;
   }
 
   public void setBody(String body) {
-    this.Body = Body;
+    this.body = body;
   }
 
   public Integer getLikes() {

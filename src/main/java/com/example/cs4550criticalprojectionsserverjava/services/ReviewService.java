@@ -9,10 +9,10 @@ import java.util.List;
 public class ReviewService {
   List<Review> reviews = new ArrayList<>();
   {
-    reviews.add(new Review(-1, "tt0120338", -1, 6, "Boooooringgggg", "Gosh this was pretty bad." +
+    reviews.add(new Review(-1, "tt0120338", -1, 6, "Boooooringgggg", "Gosh this was pretty bad. " +
             "I'm really glad that they can't make a sequel.", 360, true, false));
     reviews.add(new Review(-2, "tt0120338", -2, 10, "Heartbreaking and Life-Changing",
-            "This made me cry so hard.  I hardly ever get emotional but this masterpiece moved me to tears." +
+            "This made me cry so hard.  I hardly ever get emotional but this masterpiece moved me to tears. " +
                     "I was really moved by the tragic tale of that poor, beautiful ship.  Oh, and some people died too.",
             22, true, false));
     reviews.add(new Review(-3, "tt0120338", -3, 1, "This isn't G-Force",
@@ -57,12 +57,12 @@ public class ReviewService {
     return 0;
   }
 
-  public Integer updateReview(Integer reviewId, Review review) {
+  public Review updateReview(Integer reviewId, Review review) {
     for (int ii = 0; ii < reviews.size(); ii++) {
       if (reviews.get(ii).getId() == reviewId) {
         reviews.set(ii, review);
       }
     }
-    return 0;
+    return review;
   }
 }
