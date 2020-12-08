@@ -19,13 +19,51 @@ public class ReviewService {
             "I went to the theater expecting some crazy guinea pig spy action. Imagine my disappointment " +
                     "when I took my seat only to be greeted by some sob story about a boat. Would give a negative rating if I could.",
             1000, true, false));
+    reviews.add(new Review(-4, "tt0120338", -4, 8, "I didn't even watch",
+            "I'm a critic so I know that you will trust me even though I slept through it all.",
+            10000, true, true));
   }
 
-  public List<Review> findReviewsForMovie(String mid) {
+  public List<Review> findCriticReviewsForMovie(String mid, Integer count) {
+    int temp = 0;
     List<Review> reviewsForMovie = new ArrayList<>();
     for (Review r: reviews) {
+      if (temp >= count) {
+        break;
+      }
+      if (r.getMovieId().equals(mid) && r.getCriticReview()) {
+        reviewsForMovie.add(r);
+        temp++;
+      }
+    }
+    return reviewsForMovie;
+  }
+
+  public List<Review> findUserReviewsForMovie(String mid, Integer count) {
+    int temp = 0;
+    List<Review> reviewsForMovie = new ArrayList<>();
+    for (Review r: reviews) {
+      if (temp >= count) {
+        break;
+      }
+      if (r.getMovieId().equals(mid) && !r.getCriticReview()) {
+        reviewsForMovie.add(r);
+        temp++;
+      }
+    }
+    return reviewsForMovie;
+  }
+
+  public List<Review> findReviewsForMovie(String mid, Integer count) {
+    int temp = 0;
+    List<Review> reviewsForMovie = new ArrayList<>();
+    for (Review r: reviews) {
+      if (temp >= count) {
+        break;
+      }
       if (r.getMovieId().equals(mid)) {
         reviewsForMovie.add(r);
+        temp++;
       }
     }
     return reviewsForMovie;

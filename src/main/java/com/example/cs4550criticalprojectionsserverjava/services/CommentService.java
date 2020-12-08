@@ -18,11 +18,16 @@ public class CommentService {
     comments.add(new Comment(-4, -3, -2, "Grow up.", -50));
   }
 
-  public List<Comment> findCommentsForReview(Integer rid) {
+  public List<Comment> findCommentsForReview(Integer rid, Integer count) {
+    int temp = 0;
     List<Comment> commentsForReview = new ArrayList<>();
     for (Comment c: comments) {
+      if (temp >= count) {
+        break;
+      }
       if (rid == c.getReviewId()) {
         commentsForReview.add(c);
+        temp++;
       }
     }
     return commentsForReview;

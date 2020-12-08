@@ -11,10 +11,25 @@ import java.util.List;
 public class ReviewController {
   ReviewService service = new ReviewService();
 
-  @GetMapping("/api/movies/{mid}/reviews")
+  @GetMapping("/api/movies/{mid}/reviews/{cnt}")
   public List<Review> findReviewsForMovie(
-          @PathVariable("mid") String movieId) {
-    return service.findReviewsForMovie(movieId);
+          @PathVariable("mid") String movieId,
+          @PathVariable("cnt") Integer count) {
+    return service.findReviewsForMovie(movieId, count);
+  }
+
+  @GetMapping("/api/movies/{mid}/reviews/critic/{cnt}")
+  public List<Review> findCriticReviewsForMovie(
+          @PathVariable("mid") String movieId,
+          @PathVariable("cnt") Integer count) {
+    return service.findCriticReviewsForMovie(movieId, count);
+  }
+
+  @GetMapping("/api/movies/{mid}/reviews/user/{cnt}")
+  public List<Review> findUserReviewsForMovie(
+          @PathVariable("mid") String movieId,
+          @PathVariable("cnt") Integer count) {
+    return service.findUserReviewsForMovie(movieId, count);
   }
 
   @GetMapping("/api/users/{uid}/reviews")

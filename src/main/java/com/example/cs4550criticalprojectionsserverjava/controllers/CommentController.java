@@ -10,10 +10,11 @@ import java.util.List;
 public class CommentController {
   CommentService service = new CommentService();
 
-  @GetMapping("/api/reviews/{rid}/comments")
+  @GetMapping("/api/reviews/{rid}/comments/{cnt}")
   public List<Comment> findCommentsForReview(
-          @PathVariable("rid") Integer reviewId) {
-    return service.findCommentsForReview(reviewId);
+          @PathVariable("rid") Integer reviewId,
+          @PathVariable("cnt") Integer count) {
+    return service.findCommentsForReview(reviewId, count);
   }
 
   @GetMapping("/api/users/{uid}/comments")
