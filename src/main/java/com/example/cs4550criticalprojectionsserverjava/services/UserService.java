@@ -11,9 +11,9 @@ public class UserService {
     List<User> users = new ArrayList<>();
 
     {
-        users.add(new User(1, "user1", "password1", "user1@email.com", "Admin"));
-        users.add(new User(2, "user2", "password2", "user2@email.com", "User"));
-        users.add(new User(3, "user3", "password3", "user3@email.com", "Reviewer"));
+        users.add(new User(1, "user1", "password1", "user1@email.com", "Admin", "https://i.stack.imgur.com/l60Hf.png"));
+        users.add(new User(2, "user2", "password2", "user2@email.com", "User", "https://i.stack.imgur.com/l60Hf.png"));
+        users.add(new User(3, "user3", "password3", "user3@email.com", "Reviewer", "https://i.stack.imgur.com/l60Hf.png"));
     }
 
     public UserResponse usernameIsValid(String username) {
