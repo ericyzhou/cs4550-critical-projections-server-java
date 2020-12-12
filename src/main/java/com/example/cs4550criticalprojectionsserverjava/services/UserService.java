@@ -11,10 +11,10 @@ public class UserService {
     List<User> users = new ArrayList<>();
 
     {
-        users.add(new User(-1, "user1", "password1", "user1@email.com", "Admin", "https://i.stack.imgur.com/l60Hf.png"));
-        users.add(new User(-2, "user2", "password2", "user2@email.com", "User", "https://i.stack.imgur.com/l60Hf.png"));
-        users.add(new User(-3, "user3", "password3", "user3@email.com", "Reviewer", "https://i.stack.imgur.com/l60Hf.png"));
-        users.add(new User(-4, "user4", "password4", "user4@email.com", "Reviewer", "https://i.stack.imgur.com/l60Hf.png"));
+        users.add(new User(-1, "user1", "password1", "user1@email.com", "Admin", "https://pbs.twimg.com/profile_images/2205628019/ny2hc_400x400.png"));
+        users.add(new User(-2, "user2", "password2", "user2@email.com", "User", "https://images.uncyclomedia.co/uncyclopedia/en/7/77/Bilbobag.jpg"));
+        users.add(new User(-3, "user3", "password3", "user3@email.com", "Reviewer", "https://upload.wikimedia.org/wikipedia/commons/b/b6/Queen_Elizabeth_II_in_March_2015.jpg"));
+        users.add(new User(-4, "user4", "password4", "user4@email.com", "Reviewer", "https://www.courant.com/resizer/D9qmAnzR8PY5q-GBdUBBVuNVUTs=/415x311/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/NTWCZKYTDJBI7CASRJ32F2RN6E.jpg"));
     }
 
     public UserResponse usernameIsValid(String username) {
