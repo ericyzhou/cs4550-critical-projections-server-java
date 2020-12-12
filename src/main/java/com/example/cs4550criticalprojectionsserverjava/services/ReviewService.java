@@ -113,6 +113,10 @@ public class ReviewService {
         count++;
       }
     }
-    return (double)sum / (double)count;
+    if (count == 0) {
+      return 0.0;
+    }
+    double temp = (double)sum / (double)count;
+    return  Math.floor(temp * 100) / 100;
   }
 }
