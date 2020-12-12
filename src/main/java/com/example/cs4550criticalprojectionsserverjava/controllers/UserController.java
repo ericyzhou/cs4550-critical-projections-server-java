@@ -35,6 +35,12 @@ public class UserController {
         return service.getUserByName(username);
     }
 
+    @GetMapping("/api/users/{uid}")
+    public User getUserById(
+            @PathVariable("uid") Integer id) {
+        return service.getUserById(id);
+    }
+
     @PostMapping("/api/users")
     public User createUser(
             @RequestBody User user) {
