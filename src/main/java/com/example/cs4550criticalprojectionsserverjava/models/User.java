@@ -10,13 +10,15 @@ public class User{
     private String password;
     private String email;
     private String role;
+    private String profilePic;
 
-    public User(Integer id, String username, String password, String email, String role) {
+    public User(Integer id, String username, String password, String email, String role, String profilePic) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
+        this.profilePic = profilePic;
     }
 
     public Integer getId() {
@@ -59,4 +61,11 @@ public class User{
         this.role = role;
     }
 
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
 }
