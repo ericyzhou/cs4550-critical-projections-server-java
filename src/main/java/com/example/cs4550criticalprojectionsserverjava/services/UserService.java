@@ -15,13 +15,13 @@ public class UserService {
         users.add(new User(3, "user3", "password3", "user3@email.com", "Reviewer"));
     }
 
-    public Boolean usernameIsValid(String username) {
+    public Integer usernameIsValid(String username) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                return false;
+                return 0;
             }
         }
-        return true;
+        return 1;
     }
 
     public List<User> getAllUsers() {
