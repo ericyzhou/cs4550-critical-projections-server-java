@@ -15,6 +15,15 @@ public class UserService {
         users.add(new User(3, "user3", "password3", "user3@email.com", "Reviewer"));
     }
 
+    public Boolean usernameIsValid(String username) {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public List<User> getAllUsers() {
         return users;
     }

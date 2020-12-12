@@ -11,6 +11,11 @@ import java.util.List;
 public class UserController {
     UserService service = new UserService();
 
+    @GetMapping("api/validate/{username}")
+    public Boolean usernameIsValid(@PathVariable("username") String username) {
+        return service.usernameIsValid(username);
+    }
+
     @GetMapping("/api/users")
     public List<User> findAllUsers() {
         return service.getAllUsers();
