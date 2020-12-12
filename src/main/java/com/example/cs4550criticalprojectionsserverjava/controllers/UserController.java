@@ -35,7 +35,7 @@ public class UserController {
         return service.getUserByName(username);
     }
 
-    @GetMapping("/api/users/{uid}")
+    @GetMapping("/api/users/id/{uid}")
     public User getUserById(
             @PathVariable("uid") Integer id) {
         return service.getUserById(id);
