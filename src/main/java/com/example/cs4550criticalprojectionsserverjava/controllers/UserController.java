@@ -15,7 +15,7 @@ public class UserController {
     @GetMapping("api/validate/{username}")
     public UserResponse usernameIsValid(
             @PathVariable("username") String username) {
-        return new UserResponse(service.usernameIsValid(username));
+        return service.usernameIsValid(username);
     }
 
     @GetMapping("/api/users")

@@ -1,6 +1,7 @@
 package com.example.cs4550criticalprojectionsserverjava.services;
 
 import com.example.cs4550criticalprojectionsserverjava.models.User;
+import com.example.cs4550criticalprojectionsserverjava.models.UserResponse;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,13 +16,13 @@ public class UserService {
         users.add(new User(3, "user3", "password3", "user3@email.com", "Reviewer"));
     }
 
-    public Integer usernameIsValid(String username) {
+    public UserResponse usernameIsValid(String username) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                return 0;
+                return new UserResponse(0);
             }
         }
-        return 1;
+        return new UserResponse(1);
     }
 
     public List<User> getAllUsers() {
