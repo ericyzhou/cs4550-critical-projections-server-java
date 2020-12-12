@@ -32,6 +32,11 @@ public class ReviewController {
     return service.findUserReviewsForMovie(movieId, count);
   }
 
+  @GetMapping("/api/movies/{mid}/score")
+  public Double findUserReviewsForMovie(@PathVariable("mid") String movieId) {
+    return service.getScoreForMovie(movieId);
+  }
+
   @GetMapping("/api/users/{uid}/reviews")
   public List<Review> findReviewsForUser(
           @PathVariable("uid") Integer userId) {

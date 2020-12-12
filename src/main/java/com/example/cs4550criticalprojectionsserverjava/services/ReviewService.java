@@ -103,4 +103,16 @@ public class ReviewService {
     }
     return review;
   }
+
+  public Double getScoreForMovie(String mid) {
+    int sum = 0;
+    int count = 0;
+    for (Review r: reviews) {
+      if (r.getMovieId().equals(mid)) {
+        sum += r.getRating();
+        count++;
+      }
+    }
+    return (double)sum / (double)count;
+  }
 }
