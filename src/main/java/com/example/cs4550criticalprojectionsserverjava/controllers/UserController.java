@@ -1,6 +1,7 @@
 package com.example.cs4550criticalprojectionsserverjava.controllers;
 
 import com.example.cs4550criticalprojectionsserverjava.models.User;
+import com.example.cs4550criticalprojectionsserverjava.models.UserResponse;
 import com.example.cs4550criticalprojectionsserverjava.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +13,9 @@ public class UserController {
     UserService service = new UserService();
 
     @GetMapping("api/validate/{username}")
-    public Integer usernameIsValid(@PathVariable("username") String username) {
-        return service.usernameIsValid(username);
+    public UserResponse usernameIsValid(
+            @PathVariable("username") String username) {
+        return new UserResponse(service.usernameIsValid(username));
     }
 
     @GetMapping("/api/users")
