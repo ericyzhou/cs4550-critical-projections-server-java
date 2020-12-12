@@ -38,6 +38,15 @@ public class UserService {
         return null;
     }
 
+    public UserResponse getUserByLogin(String username, String password) {
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                return new UserResponse(1, user);
+            }
+        }
+        return new UserResponse(0, null);
+    }
+
     public User createUser(User newUser) {
         Integer newId = (new Random()).nextInt(Integer.MAX_VALUE);
         newUser.setId(newId);
