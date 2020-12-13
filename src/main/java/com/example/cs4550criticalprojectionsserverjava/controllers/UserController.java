@@ -12,12 +12,6 @@ import java.util.List;
 public class UserController {
     UserService service = new UserService();
 
-    @GetMapping("api/users/{username}")
-    public UserResponse getUserByLogin(@PathVariable("username") String username,
-                                       @RequestBody String password) {
-        return service.getUserByLogin(username, password);
-    }
-
     @GetMapping("api/validate/{username}")
     public UserResponse usernameIsValid(
             @PathVariable("username") String username) {
@@ -30,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/api/users/{username}")
-    public User getUserByName(
+    public UserResponse getUserByName(
             @PathVariable("username") String username) {
         return service.getUserByName(username);
     }

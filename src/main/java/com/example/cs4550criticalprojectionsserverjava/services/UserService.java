@@ -30,13 +30,16 @@ public class UserService {
         return users;
     }
 
-    public User getUserByName(String username) {
+    public UserResponse getUserByName(String username) {
+        User tempUser = new User();
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                return user;
+                tempUser = new User(user);
+                tempUser.setPassword("");
+                return new UserResponse(1, tempUser);
             }
         }
-        return null;
+        return new UserResponse(0, null);
     }
 
     public User getUserById(Integer id) {
