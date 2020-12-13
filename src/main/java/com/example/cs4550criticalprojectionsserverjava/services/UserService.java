@@ -26,9 +26,9 @@ public class UserService {
     public UserResponse usernameIsValid(String username) {
         List<String> matches = this.userRepository.findMatchingUsernames(username);
         if (matches.size() == 0) {
-            return new UserResponse(0);
-        } else {
             return new UserResponse(1);
+        } else {
+            return new UserResponse(0);
         }
     }
 
