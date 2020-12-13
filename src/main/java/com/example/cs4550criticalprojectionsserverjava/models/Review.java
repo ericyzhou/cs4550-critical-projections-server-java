@@ -8,14 +8,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "reviews")
-public class Review{
+public class Review {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String movieId;
   private Integer userId;
   private Integer rating;
-  private String Title;
+  private String title;
   private String body;
   private Integer likes;
   private Boolean approved;
@@ -23,13 +23,13 @@ public class Review{
 
   public Review() {}
 
-  public Review(Integer id, String movieId, Integer userId, Integer rating, String Title, String body, Integer likes,
+  public Review(Integer id, String movieId, Integer userId, Integer rating, String title, String body, Integer likes,
                 Boolean approved, Boolean criticReview) {
     this.id = id;
     this.movieId = movieId;
     this.userId = userId;
     this.rating = rating;
-    this.Title = Title;
+    this.title = title;
     this.body = body;
     this.likes = likes;
     this.approved = approved;
@@ -93,11 +93,11 @@ public class Review{
   }
 
   public String getTitle() {
-    return Title;
+    return title;
   }
 
-  public void setTitle(String Title) {
-    this.Title = Title;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   public Boolean getCriticReview() {
