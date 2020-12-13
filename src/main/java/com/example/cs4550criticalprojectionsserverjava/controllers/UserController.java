@@ -44,7 +44,7 @@ public class UserController {
         return service.getUserById(id);
     }
 
-    @PostMapping("/api/users")
+    @PostMapping("api/users")
     public User createUser(
             @RequestBody User user) {
         return service.createUser(user);
