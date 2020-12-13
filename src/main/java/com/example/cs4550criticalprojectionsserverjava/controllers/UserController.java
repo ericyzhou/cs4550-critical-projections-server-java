@@ -28,6 +28,12 @@ public class UserController {
         return service.getUserByLogin(login);
     }
 
+    @PostMapping("/api/logout")
+    public Integer logout(HttpSession session) {
+        session.invalidate();
+        return 1;
+    }
+
     @GetMapping("/api/curuser")
     public UserResponse getLoggedInUser(
             HttpSession session
