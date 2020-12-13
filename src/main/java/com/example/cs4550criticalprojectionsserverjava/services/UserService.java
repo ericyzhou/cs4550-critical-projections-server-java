@@ -1,5 +1,6 @@
 package com.example.cs4550criticalprojectionsserverjava.services;
 
+import com.example.cs4550criticalprojectionsserverjava.models.Login;
 import com.example.cs4550criticalprojectionsserverjava.models.User;
 import com.example.cs4550criticalprojectionsserverjava.models.UserResponse;
 
@@ -52,7 +53,9 @@ public class UserService {
         return null;
     }
 
-    public UserResponse getUserByLogin(String username, String password) {
+    public UserResponse getUserByLogin(Login login) {
+        String username = login.getUsername();
+        String password = login.getPassword();
         for (User user : users) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return new UserResponse(1, user);

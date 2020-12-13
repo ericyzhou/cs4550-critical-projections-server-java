@@ -1,10 +1,12 @@
 package com.example.cs4550criticalprojectionsserverjava.models;
 
-// @Entity
-// @Table(name = 'users')
-public class User{
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String username;
     private String password;
