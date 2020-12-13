@@ -15,13 +15,13 @@ public class UserController {
     @Autowired
     UserService service;
 
-    @PostMapping("api/login")
+    @PostMapping("/api/login")
     public UserResponse getUserByLogin(
             @RequestBody Login login) {
         return service.getUserByLogin(login);
     }
 
-    @GetMapping("api/validate/{username}")
+    @GetMapping("/api/validate/{username}")
     public UserResponse usernameIsValid(
             @PathVariable("username") String username) {
         return service.usernameIsValid(username);
@@ -44,7 +44,7 @@ public class UserController {
         return service.getUserById(id);
     }
 
-    @PostMapping("api/users")
+    @PostMapping("/api/users")
     public User createUser(
             @RequestBody User user) {
         return service.createUser(user);
