@@ -15,14 +15,7 @@ public class User {
     private String profilePic;
 
     // Temp bogus user attributes for returning user objects
-    public User() {
-        this.id = 0;
-        this.username = "";
-        this.password = "";
-        this.email = "";
-        this.role = "";
-        this.profilePic = "";
-    }
+    public User() { }
 
     public User(Integer id, String username, String password, String email, String role, String profilePic) {
         this.id = id;
