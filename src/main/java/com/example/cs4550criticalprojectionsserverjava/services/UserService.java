@@ -67,8 +67,8 @@ public class UserService {
         }
     }
 
-    public User createUser(User newUser) {
-        return this.userRepository.save(newUser);
+    public User createUser(User user) {
+        return this.userRepository.save(user);
     }
 
     public Integer deleteUser(Integer userId) {

@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface UserRepository extends CrudRepository<User, Integer>{
+public interface UserRepository extends CrudRepository<User, Integer> {
 
     @Query(value = "SELECT username FROM users WHERE username=:username", nativeQuery = true)
     public List<String> findMatchingUsernames(@Param("username") String username);
