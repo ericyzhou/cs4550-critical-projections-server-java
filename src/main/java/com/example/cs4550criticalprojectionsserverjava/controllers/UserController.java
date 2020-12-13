@@ -12,9 +12,9 @@ import java.util.List;
 public class UserController {
     UserService service = new UserService();
 
-    @GetMapping("api/users/{username}/{password}")
+    @GetMapping("api/users/{username}")
     public UserResponse getUserByLogin(@PathVariable("username") String username,
-                                       @PathVariable("password") String password) {
+                                       @RequestBody String password) {
         return service.getUserByLogin(username, password);
     }
 
