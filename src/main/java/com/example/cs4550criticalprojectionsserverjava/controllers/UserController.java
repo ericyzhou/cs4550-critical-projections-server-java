@@ -48,16 +48,16 @@ public class UserController {
         return service.createUser(user);
     }
 
-    @DeleteMapping("/api/users/{username}")
+    @DeleteMapping("/api/users/{uid}")
     public Integer deleteUser(
-            @PathVariable("username") String username) {
-        return service.deleteUser(username);
+            @PathVariable("uid") Integer userId) {
+        return service.deleteUser(userId);
     }
 
-    @PutMapping("/api/users/{username}")
-    public Integer updateUser(
-            @PathVariable("username") String username,
+    @PutMapping("/api/users/{uid}")
+    public User updateUser(
+            @PathVariable("uid") Integer userId,
             @RequestBody User newUser) {
-        return service.updateUser(username, newUser);
+        return service.updateUser(userId, newUser);
     }
 }
