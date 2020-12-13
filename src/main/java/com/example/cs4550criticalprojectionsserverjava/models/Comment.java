@@ -1,15 +1,23 @@
 package com.example.cs4550criticalprojectionsserverjava.models;
 
-// @Entity
-// @Table(name = 'comments')
+import javax.persistence.Entity;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+
+@Entity
+@Table(name = "comments")
 public class Comment {
-  //@Id
-  //@GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private Integer reviewId;
   private Integer userId;
   private String body;
   private Integer likes;
+
+  public Comment () {}
 
   public Comment(Integer id, Integer reviewId, Integer userId, String body, Integer likes) {
     this.id = id;

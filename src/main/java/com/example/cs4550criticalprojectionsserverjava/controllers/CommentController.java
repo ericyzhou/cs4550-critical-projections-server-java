@@ -2,13 +2,16 @@ package com.example.cs4550criticalprojectionsserverjava.controllers;
 
 import com.example.cs4550criticalprojectionsserverjava.models.Comment;
 import com.example.cs4550criticalprojectionsserverjava.services.CommentService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class CommentController {
-  CommentService service = new CommentService();
+  @Autowired
+  CommentService service;
 
   @GetMapping("/api/reviews/{rid}/comments/{cnt}")
   public List<Comment> findCommentsForReview(

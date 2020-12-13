@@ -2,6 +2,8 @@ package com.example.cs4550criticalprojectionsserverjava.controllers;
 
 import com.example.cs4550criticalprojectionsserverjava.models.Review;
 import com.example.cs4550criticalprojectionsserverjava.services.ReviewService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,7 +11,8 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 public class ReviewController {
-  ReviewService service = new ReviewService();
+  @Autowired
+  ReviewService service;
 
   @GetMapping("/api/movies/{mid}/reviews/{cnt}")
   public List<Review> findReviewsForMovie(
@@ -30,6 +33,11 @@ public class ReviewController {
           @PathVariable("mid") String movieId,
           @PathVariable("cnt") Integer count) {
     return service.findUserReviewsForMovie(movieId, count);
+  }
+
+  @GetMapping("/api/reviews/{cnt}")
+  public List<Review> findUserReviewsForMovie(@PathVariable("cnt") Integer count) {
+    return service.findTopReviews(count);
   }
 
   @GetMapping("/api/movies/{mid}/score")

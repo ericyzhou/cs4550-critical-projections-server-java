@@ -1,12 +1,20 @@
 package com.example.cs4550criticalprojectionsserverjava.services;
 
 import com.example.cs4550criticalprojectionsserverjava.models.Review;
+import com.example.cs4550criticalprojectionsserverjava.repositories.CommentRepository;
+import com.example.cs4550criticalprojectionsserverjava.repositories.ReviewRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
 
+@Service
 public class ReviewService {
+  @Autowired
+  ReviewRepository reviewRepository;
   List<Review> reviews = new ArrayList<>();
   {
     reviews.add(new Review(-1, "tt0120338", -1, 6, "Boooooringgggg", "Gosh this was pretty bad. " +
@@ -25,94 +33,73 @@ public class ReviewService {
   }
 
   public List<Review> findCriticReviewsForMovie(String mid, Integer count) {
-    int temp = 0;
-    List<Review> reviewsForMovie = new ArrayList<>();
-    for (Review r: reviews) {
-      if (temp >= count) {
-        break;
-      }
-      if (r.getMovieId().equals(mid) && r.getCriticReview()) {
-        reviewsForMovie.add(r);
-        temp++;
-      }
+    List<Review> reviewsForMovie = this.reviewRepository.findCriticReviewByMovie(mid);
+    if (count < reviewsForMovie.size()) {
+      return reviewsForMovie.subList(0, count);
     }
     return reviewsForMovie;
   }
 
   public List<Review> findUserReviewsForMovie(String mid, Integer count) {
-    int temp = 0;
-    List<Review> reviewsForMovie = new ArrayList<>();
-    for (Review r: reviews) {
-      if (temp >= count) {
-        break;
-      }
-      if (r.getMovieId().equals(mid) && !r.getCriticReview()) {
-        reviewsForMovie.add(r);
-        temp++;
-      }
+    List<Review> reviewsForMovie = this.reviewRepository.findUserReviewByMovie(mid);
+    if (count < reviewsForMovie.size()) {
+      return reviewsForMovie.subList(0, count);
     }
     return reviewsForMovie;
   }
 
   public List<Review> findReviewsForMovie(String mid, Integer count) {
-    int temp = 0;
-    List<Review> reviewsForMovie = new ArrayList<>();
-    for (Review r: reviews) {
-      if (temp >= count) {
-        break;
-      }
-      if (r.getMovieId().equals(mid)) {
-        reviewsForMovie.add(r);
-        temp++;
-      }
+    List<Review> reviewsForMovie = this.reviewRepository.findReviewByMovie(mid);
+    if (count < reviewsForMovie.size()) {
+      return reviewsForMovie.subList(0, count);
     }
     return reviewsForMovie;
   }
 
   public List<Review> findReviewsForUser(Integer uid) {
-    List<Review> reviewsForMovie = new ArrayList<>();
-    for (Review r: reviews) {
-      if (r.getUserId() == uid) {
-        reviewsForMovie.add(r);
-      }
+    return this.reviewRepository.findReviewByUser(uid);
+  }
+
+  public List<Review> findTopReviews(Integer count) {
+    List<Review> reviews = this.reviewRepository.findTopReviews();
+    if (count < reviews.size()) {
+      return reviews.subList(0, count);
     }
-    return reviewsForMovie;
+    return reviews;
   }
 
   public Review createReview(Review review) {
-    Integer newId = (new Random()).nextInt(Integer.MAX_VALUE);
-    review.setId(newId);
-    reviews.add(review);
-    return review;
+    return reviewRepository.save(review);
   }
 
   public Integer removeReview(Integer reviewId) {
-    for (Review r: reviews) {
-      if (reviewId == r.getId()) {
-        reviews.remove(r);
-      }
-    }
+    reviewRepository.deleteById(reviewId);
     return 0;
   }
 
   public Review updateReview(Integer reviewId, Review review) {
-    for (int ii = 0; ii < reviews.size(); ii++) {
-      if (reviews.get(ii).getId() == reviewId) {
-        reviews.set(ii, review);
-      }
-    }
-    return review;
+    Review r = reviewRepository.findById(reviewId).get();
+    r.setApproved(review.getApproved());
+    r.setBody(review.getBody());
+    r.setLikes(review.getLikes());
+    r.setTitle(review.getTitle());
+    r.setRating(review.getRating());
+    return reviewRepository.save(r);
   }
 
   public Double getScoreForMovie(String mid) {
     int sum = 0;
     int count = 0;
-    for (Review r: reviews) {
-      if (r.getMovieId().equals(mid)) {
-        sum += r.getRating();
-        count++;
-      }
+
+    for (Review r: this.findCriticReviewsForMovie(mid, Integer.MAX_VALUE)) {
+      sum += r.getRating();
+      count++;
     }
+    for (Review r: this.findUserReviewsForMovie(mid, Integer.MAX_VALUE)) {
+      sum += r.getRating();
+      count++;
+    }
+
     if (count == 0) {
       return 0.0;
     }

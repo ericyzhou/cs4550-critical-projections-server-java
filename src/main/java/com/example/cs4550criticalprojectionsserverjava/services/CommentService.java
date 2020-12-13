@@ -1,12 +1,20 @@
 package com.example.cs4550criticalprojectionsserverjava.services;
 
 import com.example.cs4550criticalprojectionsserverjava.models.Comment;
+import com.example.cs4550criticalprojectionsserverjava.repositories.CommentRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.List;
 
+@Service
 public class CommentService {
+  @Autowired
+  CommentRepository commentRepository;
   List<Comment> comments = new ArrayList<>();
   {
     comments.add(new Comment(-1, -1, -2, "How dare you say this! This movie is " +
@@ -19,52 +27,31 @@ public class CommentService {
   }
 
   public List<Comment> findCommentsForReview(Integer rid, Integer count) {
-    int temp = 0;
-    List<Comment> commentsForReview = new ArrayList<>();
-    for (Comment c: comments) {
-      if (temp >= count) {
-        break;
-      }
-      if (rid == c.getReviewId()) {
-        commentsForReview.add(c);
-        temp++;
-      }
+    List<Comment> commentsForReview = this.commentRepository.findCommentsByReview(rid);
+    if (count < commentsForReview.size()) {
+      return commentsForReview.subList(0, count);
     }
     return commentsForReview;
   }
 
   public List<Comment> findCommentsForUser(Integer uid) {
-    List<Comment> commentsForUser = new ArrayList<>();
-    for (Comment c: comments) {
-      if (uid == c.getUserId()) {
-        commentsForUser.add(c);
-      }
-    }
-    return commentsForUser;
+    return this.commentRepository.findCommentsByUser(uid);
   }
 
   public Comment createComment(Comment comment) {
-    Integer newId = (new Random()).nextInt(Integer.MAX_VALUE);
-    comment.setId(newId);
-    comments.add(comment);
-    return comment;
+    return commentRepository.save(comment);
   }
 
   public Integer removeComment(Integer commentId) {
-    for (Comment c: comments) {
-      if (commentId == c.getId()) {
-        comments.remove(c);
-      }
-    }
+    commentRepository.deleteById(commentId);
     return 0;
   }
 
   public Integer updateComment(Integer commentId, Comment comment) {
-    for (int ii = 0; ii < comments.size(); ii++) {
-      if (comments.get(ii).getId() == commentId) {
-        comments.set(ii, comment);
-      }
-    }
+    Comment com = commentRepository.findById(commentId).get();
+    com.setBody(comment.getBody());
+    com.setLikes(comment.getLikes());
+    commentRepository.save(com);
     return 0;
   }
 }

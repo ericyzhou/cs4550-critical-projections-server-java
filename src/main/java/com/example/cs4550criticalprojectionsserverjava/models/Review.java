@@ -1,10 +1,16 @@
 package com.example.cs4550criticalprojectionsserverjava.models;
 
-// @Entity
-// @Table(name = 'reviews')
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "reviews")
 public class Review{
-  //@Id
-  //@GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String movieId;
   private Integer userId;
@@ -14,6 +20,8 @@ public class Review{
   private Integer likes;
   private Boolean approved;
   private Boolean criticReview;
+
+  public Review() {}
 
   public Review(Integer id, String movieId, Integer userId, Integer rating, String Title, String body, Integer likes,
                 Boolean approved, Boolean criticReview) {
