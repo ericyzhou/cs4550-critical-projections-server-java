@@ -1,5 +1,6 @@
 package com.example.cs4550criticalprojectionsserverjava.controllers;
 
+import com.example.cs4550criticalprojectionsserverjava.models.Login;
 import com.example.cs4550criticalprojectionsserverjava.models.User;
 import com.example.cs4550criticalprojectionsserverjava.models.UserResponse;
 import com.example.cs4550criticalprojectionsserverjava.services.UserService;
@@ -14,9 +15,8 @@ public class UserController {
 
     @PostMapping("api/login")
     public UserResponse getUserByLogin(
-            @RequestBody String username,
-            @RequestBody String password) {
-        return service.getUserByLogin(username, password);
+            @RequestBody Login login) {
+        return service.getUserByLogin(login);
     }
 
     @GetMapping("api/validate/{username}")
