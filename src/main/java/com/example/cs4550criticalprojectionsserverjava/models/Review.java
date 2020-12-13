@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "reviews")
-public class Review{
+public class Review {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
@@ -96,8 +96,8 @@ public class Review{
     return title;
   }
 
-  public void setTitle(String Title) {
-    this.title = Title;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   public Boolean getCriticReview() {
