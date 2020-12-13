@@ -6,19 +6,37 @@ import com.example.cs4550criticalprojectionsserverjava.models.UserResponse;
 import com.example.cs4550criticalprojectionsserverjava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpSession;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {"http://localhost:4200", "http://https://critical-projections.herokuapp.com/"},
+        allowCredentials = "true", allowedHeaders = "*")
 public class UserController {
     @Autowired
     UserService service;
 
     @PostMapping("/api/login")
     public UserResponse getUserByLogin(
-            @RequestBody Login login) {
+            @RequestBody Login login,
+            HttpSession session) {
+      UserResponse user = service.getUserByName(login.getUsername());
+      if (user.getResponse() != 0) {
+          session.setAttribute("currentUser", user.getUser());
+      }
         return service.getUserByLogin(login);
+    }
+
+    @GetMapping("/api/curuser")
+    public UserResponse getLoggedInUser(
+            HttpSession session
+    ) {
+      User user = (User)session.getAttribute("currentUser");
+      if (user == null) {
+        return new UserResponse(0, null);
+      }
+      return new UserResponse(1, user);
     }
 
     @GetMapping("/api/validate/{username}")
