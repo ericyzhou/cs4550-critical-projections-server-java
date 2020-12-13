@@ -31,10 +31,9 @@ public class UserService {
     }
 
     public UserResponse getUserByName(String username) {
-        User tempUser = new User();
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                tempUser = new User(user);
+                User tempUser = new User(user);
                 tempUser.setPassword("");
                 return new UserResponse(1, tempUser);
             }
@@ -45,7 +44,9 @@ public class UserService {
     public User getUserById(Integer id) {
         for (User user : users) {
             if (user.getId() == id) {
-                return user;
+                User tempUser = new User(user);
+                tempUser.setPassword("");
+                return tempUser;
             }
         }
         return null;
@@ -64,7 +65,9 @@ public class UserService {
         Integer newId = (new Random()).nextInt(Integer.MAX_VALUE);
         newUser.setId(newId);
         users.add(newUser);
-        return newUser;
+        User tempUser = new User(newUser);
+        tempUser.setPassword("");
+        return tempUser;
     }
 
     public Integer deleteUser(String username) {
