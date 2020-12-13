@@ -4,6 +4,7 @@ import com.example.cs4550criticalprojectionsserverjava.models.Login;
 import com.example.cs4550criticalprojectionsserverjava.models.User;
 import com.example.cs4550criticalprojectionsserverjava.models.UserResponse;
 import com.example.cs4550criticalprojectionsserverjava.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 public class UserController {
-    UserService service = new UserService();
+    @Autowired
+    UserService service;
 
     @PostMapping("api/login")
     public UserResponse getUserByLogin(
