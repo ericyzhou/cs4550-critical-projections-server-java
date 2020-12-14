@@ -21,6 +21,12 @@ public class ReviewController {
     return service.findReviewsForMovie(movieId, count);
   }
 
+  @GetMapping("/api/reviews/{cnt}")
+  public List<Review> getReview(
+          @PathVariable("cnt") Integer count) {
+    return service.getReviews(count);
+  }
+
   @GetMapping("/api/movies/{mid}/reviews/critic/{cnt}")
   public List<Review> findCriticReviewsForMovie(
           @PathVariable("mid") String movieId,

@@ -40,6 +40,14 @@ public class ReviewService {
     return reviewsForMovie;
   }
 
+  public List<Review> getReviews(Integer count) {
+    List<Review> reviewsForMovie = (List<Review>)this.reviewRepository.findAll();
+    if (count < reviewsForMovie.size()) {
+      return reviewsForMovie.subList(0, count);
+    }
+    return reviewsForMovie;
+  }
+
   public List<Review> findUserReviewsForMovie(String mid, Integer count) {
     List<Review> reviewsForMovie = this.reviewRepository.findUserReviewByMovie(mid);
     if (count < reviewsForMovie.size()) {
