@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200", "http://https://critical-projections.herokuapp.com/"},
+@CrossOrigin(origins = {"http://localhost:4200", "https://critical-projections.herokuapp.com"},
         allowCredentials = "true", allowedHeaders = "*")
 public class UserController {
     @Autowired
@@ -26,6 +26,12 @@ public class UserController {
           session.setAttribute("currentUser", user.getUser());
       }
         return service.getUserByLogin(login);
+    }
+
+    @PostMapping("/api/logout")
+    public Integer logout(HttpSession session) {
+        session.invalidate();
+        return 1;
     }
 
     @GetMapping("/api/curuser")

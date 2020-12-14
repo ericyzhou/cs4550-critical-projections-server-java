@@ -36,7 +36,7 @@ public class ReviewController {
   }
 
   @GetMapping("/api/reviews/{cnt}")
-  public List<Review> findUserReviewsForMovie(@PathVariable("cnt") Integer count) {
+  public List<Review> findReviews(@PathVariable("cnt") Integer count) {
     return service.findTopReviews(count);
   }
 
