@@ -29,9 +29,7 @@ public class UserController {
     }
 
     @GetMapping("/api/curuser")
-    public UserResponse getLoggedInUser(
-            HttpSession session
-    ) {
+    public UserResponse getLoggedInUser(HttpSession session) {
       User user = (User)session.getAttribute("currentUser");
       if (user == null) {
         return new UserResponse(0, null);
