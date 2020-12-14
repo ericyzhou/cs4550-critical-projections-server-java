@@ -22,7 +22,7 @@ public class ReviewController {
   }
 
   @GetMapping("/api/reviews/{cnt}")
-  public List<Review> getReview(
+  public List<Review> getReviews(
           @PathVariable("cnt") Integer count) {
     return service.getReviews(count);
   }
